@@ -4,6 +4,10 @@ import javax.persistence.*;
 @Entity
 @Table(name = "users")
 public class User {
+   @OneToOne(cascade = CascadeType.ALL)
+   @JoinColumn(name = "car_id", referencedColumnName = "id")
+   private Car car;
+
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Long id;
@@ -17,8 +21,7 @@ public class User {
    @Column(name = "email")
    private String email;
 
-   @OneToOne(cascade = CascadeType.ALL)
-   private Car car;
+
 
    public User() {}
    
